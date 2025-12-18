@@ -100,6 +100,13 @@ public class SecondActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
         });
 
+        Button toVideo = findViewById(R.id.to_video_activity);
+        toVideo.setOnClickListener((view) -> {
+            Intent intent = new Intent(this, VideoActivity.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+        });
+
 
 
         EditText shareTxt = findViewById(R.id.share_txt);

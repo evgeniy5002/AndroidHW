@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // 08.12.2025
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         int launchCount = prefs.getInt(KEY_LAUNCH_COUNT, 0) + 1;
@@ -83,44 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // 18.11.2025 Натискання на кнопку виводить у тост текст вашої улюбленої пісні по одному куплету/приспіву
-        VideoView videoView = findViewById(R.id.videoView);
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.program_in_c;
-        videoView.setVideoURI(Uri.parse(videoPath));
-        Button btnPlayVideo = findViewById(R.id.click_button);
-        TextView textView = findViewById(R.id.textView);
-        btnPlayVideo.setOnClickListener((View view) -> {
-            String hexColor = "#" + String.format("%06x", (int) (Math.random() * 0xFFFFFF));
-            btnPlayVideo.setText(hexColor);
-            btnPlayVideo.setBackgroundColor(Color.parseColor(hexColor));
-
-            try {
-                SRTParser.parse(this, "program_in_c_subs.srt");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-            videoView.start();
-
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < Subtitles.subtitles.size(); i++) {
-                        if (Subtitles.subtitles.get(i).isTimeInside(videoView.getCurrentPosition())) {
-                            String text = Subtitles.subtitles.get(i).getText();
-                            runOnUiThread(() -> textView.setText(text));
-                        }
-                    }
-                }
-            }, 0, 20);
-        });
-        //
-
-
-
-
-
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_second) {
@@ -141,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     //
-
-
 
 
 
@@ -210,80 +171,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //
-}
-
-
-class SRTParser {
-    public static void parse(Context context, String filePath) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(filePath)))) {
-            long startMilliseconds;
-            long endMilliseconds;
-            String text;
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = reader.readLine();
-                String startTime = line.substring(0, line.indexOf("-->")).strip();
-                String endTime = line.substring(line.indexOf("-->") + 3).strip();
-                startMilliseconds = parseTime(startTime);
-                endMilliseconds = parseTime(endTime);
-                text = reader.readLine();
-                reader.readLine(); // skip empty line
-
-                Subtitles.add(new Subtitle(startMilliseconds, endMilliseconds, text));
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage() + "\n");
-        }
-    }
-
-    public static long parseTime(String srtTime) {
-        short hours = Short.parseShort(srtTime.substring(0, 2));
-        short minutes = Short.parseShort(srtTime.substring(3, 5));
-        short seconds = Short.parseShort(srtTime.substring(6, 8));
-        short millseconds = Short.parseShort(srtTime.substring(9));
-        return (long) (hours * 3600000 + minutes * 60000 + seconds * 1000 + millseconds);
-    }
-
-    public static String getLine(BufferedReader reader) {
-        String line;
-        return "";
-    }
-}
-
-class Subtitle {
-    private final long startMilliseconds;
-    private final long endMilliseconds;
-    private final String text;
-
-    public Subtitle(long startMilliseconds, long endMilliseconds, String text) {
-        this.startMilliseconds = startMilliseconds;
-        this.endMilliseconds = endMilliseconds;
-        this.text = text;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public boolean isTimeInside(long currentMilliseconds) {
-        return currentMilliseconds >= startMilliseconds && currentMilliseconds <= endMilliseconds;
-    }
-
-    @Override
-    public String toString() {
-        return "Start: " + this.startMilliseconds + "\n" + "End:   " + this.endMilliseconds + "\n" + "Text:  " + this.text;
-    }
-}
-
-class Subtitles {
-    public static ArrayList<Subtitle> subtitles;
-
-    static {
-        subtitles = new ArrayList<Subtitle>();
-    }
-
-    public static void add(Subtitle subtitle) {
-        subtitles.add(subtitle);
-    }
 }
