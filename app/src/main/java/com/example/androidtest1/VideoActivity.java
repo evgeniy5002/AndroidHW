@@ -55,13 +55,7 @@ public class VideoActivity extends AppCompatActivity {
             String hexColor = getRandomHexColor();
             btnPlayVideo.setText(hexColor);
             btnPlayVideo.setBackgroundColor(Color.parseColor(hexColor));
-
-            try {
-                SRTParser.parse(this, "program_in_c_subs.srt");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
+            
             videoView.start();
             updateSubtitles();
         });
