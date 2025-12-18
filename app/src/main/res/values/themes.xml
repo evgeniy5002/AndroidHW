@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="BottomNavTextActive" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/gray_text_active</item>
+    </style>
+
+    <style name="BottomNavTextInactive" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_text_inactive</item>
+    </style>
+    <style name="Theme.AppCompat.DayNight.DarkActionBar"
+        parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
