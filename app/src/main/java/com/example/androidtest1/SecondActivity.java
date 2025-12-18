@@ -107,18 +107,11 @@ public class SecondActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
         });
 
-
-
-        EditText shareTxt = findViewById(R.id.share_txt);
-        Button shareBtn = findViewById(R.id.share_btn);
-        shareBtn.setOnClickListener((view) -> {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, shareTxt.getText() + "");
-            sendIntent.setType("text/plain");
-
-            Intent shareIntent = Intent.createChooser(sendIntent, null);
-            startActivity(shareIntent);
+        Button toShare = findViewById(R.id.to_share_activity);
+        toShare.setOnClickListener((view) -> {
+            Intent intent = new Intent(this, ShareActivity.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);

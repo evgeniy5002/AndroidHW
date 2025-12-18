@@ -15,10 +15,10 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintHorizontal_bias="0.645"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/share_txt"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
 
     <Button
         android:id="@+id/to_qwerty"
@@ -29,10 +29,11 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.019" />
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -40,25 +41,11 @@
         android:layout_height="109dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075"
+        app:layout_constraintVertical_bias="0.037"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/share_btn"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="Share"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/res_from_qwerty"
-        app:layout_constraintVertical_bias="0.022" />
 
     <include
         layout="@layout/bottom_menu"
@@ -78,25 +65,10 @@
         app:layout_constraintTop_toBottomOf="@+id/to_qwerty"
         app:layout_constraintVertical_bias="0.009" />
 
-    <EditText
-        android:id="@+id/share_txt"
-        android:layout_width="249dp"
-        android:layout_height="76dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="text"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/share_btn"
-        app:layout_constraintVertical_bias="0.012" />
-
     <Button
         android:id="@+id/to_sa_activity"
         android:layout_width="258dp"
-        android:layout_height="47dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="To SA"
         android:textSize="20dp"
@@ -110,7 +82,7 @@
     <Button
         android:id="@+id/to_rv_activity"
         android:layout_width="258dp"
-        android:layout_height="47dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="To RV"
         android:textSize="20dp"
@@ -119,12 +91,12 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_minesweeper"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.182" />
 
     <Button
         android:id="@+id/to_dialog_activity"
         android:layout_width="258dp"
-        android:layout_height="47dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="To Dialog Activity"
         android:textSize="20dp"
@@ -133,12 +105,12 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_minesweeper"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintVertical_bias="0.279" />
 
     <Button
         android:id="@+id/to_diagram_activity"
         android:layout_width="258dp"
-        android:layout_height="47dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="To Diagram Activity"
         android:textSize="20dp"
@@ -147,12 +119,12 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_minesweeper"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintVertical_bias="0.377" />
 
     <Button
         android:id="@+id/to_video_activity"
         android:layout_width="258dp"
-        android:layout_height="47dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="To Video Activity"
         android:textSize="20dp"
@@ -161,6 +133,20 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_minesweeper"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.474" />
+
+    <Button
+        android:id="@+id/to_share_activity"
+        android:layout_width="258dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="To Share Activity"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_minesweeper"
+        app:layout_constraintVertical_bias="0.572" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
